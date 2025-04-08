@@ -75,7 +75,8 @@ pus_service4_update_all_stats();
 
 pus_service3_do_HK();
 
-  //TODO 07 call pus_services_do_FDIR();
+  //DONE 07 call pus_services_do_FDIR();
+pus_services_do_FDIR();
 
 //Program absolute timer
    HK_FDIRTimer.InformAt( time ); 

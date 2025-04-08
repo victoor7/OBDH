@@ -56,7 +56,7 @@ CDTCExecCtrl CDTCHandler::GetExecCtrl() {
 	CDTCExecCtrl execCtrl;
 	switch (type) {
 
-	case (03):
+	case (3):
 		execCtrl.mExecCtrl = ExecCtrlHK_FDIRTC;
 		break;
 	case (17):
