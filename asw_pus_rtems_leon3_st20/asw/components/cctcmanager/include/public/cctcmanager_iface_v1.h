@@ -308,6 +308,11 @@ public:
 		/**
 		 * \brief  
 		 */
+		void	FFwdBKGTC();
+
+		/**
+		 * \brief  
+		 */
 		void	FFwdHK_FDIRTC();
 
 		/**
@@ -348,22 +353,17 @@ public:
 		/**
 		 * \brief  
 		 */
+		bool	GFwdToBKG();
+
+		/**
+		 * \brief  
+		 */
 		bool	GFwdToHK_FDIR();
 
 		/**
 		 * \brief  
 		 */
 		bool	GToReboot();
-
-		/**
-		 * \brief 
-		 */
-		bool	GFwdToBKG();
-
-		/**
-		 * \brief 
-		 */
-		void	FFwdBKGTC();
 
 	};
 

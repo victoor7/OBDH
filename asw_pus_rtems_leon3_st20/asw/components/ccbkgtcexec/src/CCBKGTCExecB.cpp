@@ -63,7 +63,7 @@ void	CCBKGTCExec::EDROOM_CTX_Top_0::FExecBKGTC()
 	
 	// Data access
 	// ... =varSBKGTC;
-
+ 
  varSBKGTC.ExecTC();
 
 }
