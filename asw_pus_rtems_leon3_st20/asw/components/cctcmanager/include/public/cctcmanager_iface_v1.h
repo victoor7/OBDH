@@ -90,8 +90,8 @@ public:
 	//******************  Component Communication Ports *******************
 	// ********************************************************************
 
-	//! BKGTCExeCtrl Component Port
-	CEDROOMInterface	BKGTCExeCtrl;
+	//! BKGExecCtrl Component Port
+	CEDROOMInterface	BKGExecCtrl;
 	//! HK_FDIRCtrl Component Port
 	CEDROOMInterface	HK_FDIRCtrl;
 
@@ -224,7 +224,7 @@ public:
 		CEDROOMMessage * &MsgBack;
 
 		//!Component ports
-		CEDROOMInterface & BKGTCExeCtrl;
+		CEDROOMInterface & BKGExecCtrl;
 		CEDROOMInterface & HK_FDIRCtrl;
 		CEDROOMIRQInterface & RxTC;
 
@@ -243,7 +243,7 @@ public:
 			HandleTC,
 			HandleTC_ToReboot,
 			HandleTC_FwdHK_FDIRTC,
-			HandleTC_FwdToBKG,
+			HandleTC_FwdBKGTC,
 			HandleTC_ExecPrioTC,
 			EDROOMMemoryTrans };
 
@@ -308,11 +308,6 @@ public:
 		/**
 		 * \brief  
 		 */
-		void	FFwdBKGTC();
-
-		/**
-		 * \brief  
-		 */
 		void	FFwdHK_FDIRTC();
 
 		/**
@@ -353,17 +348,22 @@ public:
 		/**
 		 * \brief  
 		 */
-		bool	GFwdToBKG();
-
-		/**
-		 * \brief  
-		 */
 		bool	GFwdToHK_FDIR();
 
 		/**
 		 * \brief  
 		 */
 		bool	GToReboot();
+
+		/**
+		 * \brief 
+		 */
+		bool	GFwdToBKG();
+
+		/**
+		 * \brief 
+		 */
+		void	FFwdBKGTC();
 
 	};
 

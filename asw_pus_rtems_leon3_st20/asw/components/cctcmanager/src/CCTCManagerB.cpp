@@ -19,7 +19,7 @@ CCTCManager::EDROOM_CTX_Top_0::EDROOM_CTX_Top_0(CCTCManager &act,
 	EDROOMcomponent(act),
 	Msg(EDROOMcomponent.Msg),
 	MsgBack(EDROOMcomponent.MsgBack),
-	BKGTCExeCtrl(EDROOMcomponent.BKGTCExeCtrl),
+	BKGExecCtrl(EDROOMcomponent.BKGExecCtrl),
 	HK_FDIRCtrl(EDROOMcomponent.HK_FDIRCtrl),
 	RxTC(EDROOMcomponent.RxTC),
 	VAcceptReport(EDROOMpVarVAcceptReport),
@@ -34,7 +34,7 @@ CCTCManager::EDROOM_CTX_Top_0::EDROOM_CTX_Top_0(EDROOM_CTX_Top_0 &context):
 	EDROOMcomponent(context.EDROOMcomponent),
 	Msg(context.Msg),
 	MsgBack(context.MsgBack),
-	BKGTCExeCtrl(context.BKGTCExeCtrl),
+	BKGExecCtrl(context.BKGExecCtrl),
 	HK_FDIRCtrl(context.HK_FDIRCtrl),
 	RxTC(context.RxTC),
 	VAcceptReport(context.VAcceptReport),
@@ -77,21 +77,6 @@ void	CCTCManager::EDROOM_CTX_Top_0::FExecTC()
 
 VCurrentTC.ExecTC();
 
-}
-
-
-
-void	CCTCManager::EDROOM_CTX_Top_0::FFwdBKGTC()
-
-{
-   //Allocate data from pool
-  CDTCHandler * pSBKGTC_Data = EDROOMPoolCDTCHandler.AllocData();
-	
-		// Complete Data 
-	
-	*pSBKGTC_Data=VCurrentTC;
-   //Send message 
-   BKGTCExeCtrl.send(SBKGTC,pSBKGTC_Data,&EDROOMPoolCDTCHandler); 
 }
 
 
@@ -198,18 +183,6 @@ return VAcceptReport.IsAccepted();
 
 
 
-bool	CCTCManager::EDROOM_CTX_Top_0::GFwdToBKG()
-
-{
-
- 
- 
-   return VTCExecCtrl.IsBKGTC();
-
-}
-
-
-
 bool	CCTCManager::EDROOM_CTX_Top_0::GFwdToHK_FDIR()
 
 {
@@ -226,6 +199,31 @@ bool	CCTCManager::EDROOM_CTX_Top_0::GToReboot()
 
 return VTCExecCtrl.IsRebootTC();
 
+}
+
+
+
+bool	CCTCManager::EDROOM_CTX_Top_0::GFwdToBKG()
+
+{
+
+ return VTCExecCtrl.IsBKGTC();
+
+}
+
+
+
+void	CCTCManager::EDROOM_CTX_Top_0::FFwdBKGTC()
+
+{
+   //Allocate data from pool
+  CDTCHandler * pSBKGTC_Data = EDROOMPoolCDTCHandler.AllocData();
+	
+		// Complete Data 
+	
+	*pSBKGTC_Data=VCurrentTC; 
+   //Send message 
+   BKGExecCtrl.send(SBKGTC,pSBKGTC_Data,&EDROOMPoolCDTCHandler); 
 }
 
 
@@ -361,15 +359,15 @@ void CCTCManager::EDROOM_SUB_Top_0::EDROOMBehaviour()
 					//Next State is Ready
 					edroomNextState = Ready;
 				 } 
-				//Evaluate Branch FwdToBKG
+				//Evaluate Branch FwdBKGTC
 				else if( GFwdToBKG() )
 				{
 					//Send Asynchronous Message 
 					FFwdBKGTC();
 
-					//Branch taken is HandleTC_FwdToBKG
+					//Branch taken is HandleTC_FwdBKGTC
 					edroomCurrentTrans.localId =
-						HandleTC_FwdToBKG;
+						HandleTC_FwdBKGTC;
 
 					//Next State is Ready
 					edroomNextState = Ready;
