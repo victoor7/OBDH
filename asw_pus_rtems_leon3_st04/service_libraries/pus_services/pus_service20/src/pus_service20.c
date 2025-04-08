@@ -44,7 +44,6 @@ void pus_service20_exec_tc(tc_handler_t *ptc_handler){
 
 	switch (ptc_handler->tc_df_header.subtype) {
 
-
 	case (1):
 		pus_service20_exec_TC_20_1(ptc_handler);
 		break;
@@ -54,7 +53,6 @@ void pus_service20_exec_tc(tc_handler_t *ptc_handler){
 	default:
 		break;
 	}
-
 
 
 }

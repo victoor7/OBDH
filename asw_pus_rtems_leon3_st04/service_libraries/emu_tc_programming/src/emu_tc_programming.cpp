@@ -56,10 +56,19 @@ EmuGSS_TCProgram4_1 prog_FT_0090_step_2(FT_SOLO_EPD_ICU_SERV_4_0090_TIME_step2,
 		"FT_SOLO_EPD_ICU_SERV_4_0090 step 2, Tx Stats");
 
 
-//TODO 10 Delete PID 3 Stats as step 3
+//DONE 10 Delete PID 3 Stats as step 3
 
+EmuGSS_TCProgram4_7 prog_FT_0090_step_3(FT_SOLO_EPD_ICU_SERV_4_0090_TIME_step3,
+		"FT_SOLO_EPD_ICU_SERV_4_0090 step 3, Delete PID 3 Stats Def",3);
 
-//TODO 11 Request Stats as step 4
+//DONE 11 Request Stats as step 4
+
+EmuGSS_TCProgram4_1 prog_FT_0090_step_4(FT_SOLO_EPD_ICU_SERV_4_0090_TIME_step4,
+		"FT_SOLO_EPD_ICU_SERV_4_0090 step 4, Tx Stats");
+
+//Vemos que con la 4_6 definimos las stats y desde su definicion, cuando hagamos una 4_1
+//nos aparecerá el report de los PIDs que están definidos. Por tanto recibimos el report
+//del PID 1 y 3 y cuando eliminamos la definición del 3, este ya no aparece mas en el report
 
 
 #endif
