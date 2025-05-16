@@ -71,9 +71,18 @@ tc_accept_report_t pus_service1_tc_acceptation(tc_handler_t *ptc_handler) {
 
 			switch (ptc_handler->tc_df_header.type) {
 
-			//TODO 13   Accept ST[19] TCs
+			//DONE 13   Accept ST[19] TCs
 
-			//TODO 14 Accept ST[02] (Only TC[2,1])
+			//DONE 14 Accept ST[02] (Only TC[2,1])
+
+			case (2):
+				switch (ptc_handler->tc_df_header.subtype) {
+				case (1):
+					break;
+				default:
+					accept_report.accept_status = TCAcceptationSubTypeError;
+				}
+				break;
 
 			case (17):
 				switch (ptc_handler->tc_df_header.subtype) {
@@ -126,6 +135,19 @@ tc_accept_report_t pus_service1_tc_acceptation(tc_handler_t *ptc_handler) {
 				case (2):
 				case (5):
 				case (6):
+					break;
+				default:
+					accept_report.accept_status = TCAcceptationSubTypeError;
+
+				}
+				break;
+
+			case (19):
+				switch (ptc_handler->tc_df_header.subtype) {
+				case (1):
+				case (2):
+				case (4):
+				case (5):
 					break;
 				default:
 					accept_report.accept_status = TCAcceptationSubTypeError;

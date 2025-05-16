@@ -20,7 +20,8 @@
 #include "../emu_gss/emu_gss_tc_program.h"
 
 #include "../emu_gss/emu_gss_pus_service01.h"
-//TODO 15 Add #include emu_gss_pus_service02.h
+//DONE 15 Add #include emu_gss_pus_service02.h
+#include "../emu_gss/emu_gss_pus_service02.h"
 
 #include "../emu_gss/emu_gss_pus_service03.h"
 
@@ -35,8 +36,9 @@
 #include "../emu_gss/emu_gss_pus_service12.h"
 #include "../emu_gss/emu_gss_pus_service17.h"
 
-//TODO 16 Add #include emu_gss_pus_service19.h
-//#include "../emu_gss/emu_gss_pus_service19.h"
+//DONE 16 Add #include emu_gss_pus_service19.h
+#include "../emu_gss/emu_gss_pus_service19.h"
+
 
 #include "../emu_gss/emu_gss_pus_service20.h"
 

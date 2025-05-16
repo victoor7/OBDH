@@ -38,16 +38,18 @@
 
 #include "public/tc_rate_ctrl.h"
 
-//TODO 01 Add ST[19] & ST[02] module2
+//DONE 01 Add ST[19] & ST[02] module2
 
 
 
 #include "public/pus_service1.h"
+#include "public/pus_service2.h"
 #include "public/pus_service3.h"
 #include "public/pus_service4.h"
 #include "public/pus_service5.h"
 #include "public/pus_service12.h"
 #include "public/pus_service17.h"
+#include "public/pus_service19.h"
 #include "public/pus_service20.h"
 
 #ifdef __cplusplus

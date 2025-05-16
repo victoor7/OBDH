@@ -38,8 +38,13 @@ void pus_service19_exec_TC_19_1(tc_handler_t *ptc_handler) {
 	uint8_t N;
 	uint16_t EvID;
 
-	//TODO 04 Get N & EvID FROM TC
+	//DONE 04 Get N & EvID FROM TC
 
+		// TC -> N
+		error = tc_handler_get_uint8_appdata_field(ptc_handler, &N);
+
+		// TC -> EvID
+		error += tc_handler_get_uint16_appdata_field(ptc_handler, &EvID);
 
 	if (error) {
 
@@ -141,8 +146,13 @@ void pus_service19_exec_TC_19_2(tc_handler_t *ptc_handler) {
 	uint8_t N;
 	uint16_t EvID;
 
-	//TODO 05 Get N & EvID FROM TC
+	//DONE 05 Get N & EvID FROM TC
 
+	// TC -> N
+	error = tc_handler_get_uint8_appdata_field(ptc_handler, &N);
+
+	// TC -> EvID
+	error += tc_handler_get_uint16_appdata_field(ptc_handler, &EvID);
 
 	if (error) {
 
@@ -192,9 +202,10 @@ void pus_service19_exec_TC_19_2(tc_handler_t *ptc_handler) {
 
 				} else {
 
-					//TODO 08 Report TM[1,4] EvAction Undefined
+					//DONE 08 Report TM[1,4] EvAction Undefined
 					//use pus_service1_tx_TM_1_4_EvAction_undefined with
 					// ptc_handler and EvID as parameters
+					pus_service1_tx_TM_1_4_EvAction_undefined(ptc_handler, EvID);
 
 				}
 
@@ -214,8 +225,13 @@ void pus_service19_exec_TC_19_4(tc_handler_t *ptc_handler) {
 	uint8_t N;
 	uint16_t EvID;
 
-	//TODO 06 Get N & EvID FROM TC
+	//DONE 06 Get N & EvID FROM TC
 
+	// TC -> N
+	error = tc_handler_get_uint8_appdata_field(ptc_handler, &N);
+
+	// TC -> EvID
+	error += tc_handler_get_uint16_appdata_field(ptc_handler, &EvID);
 
 	if (error) {
 
@@ -254,9 +270,10 @@ void pus_service19_exec_TC_19_4(tc_handler_t *ptc_handler) {
 
 				} else {
 
-					//TODO 09 Report TM[1,4] EvAction Undefined
+					//DONE 09 Report TM[1,4] EvAction Undefined
 					//use pus_service1_tx_TM_1_4_EvAction_undefined with
 										// ptc_handler and EvID as parameters
+					pus_service1_tx_TM_1_4_EvAction_undefined(ptc_handler, EvID);
 				}
 
 			}
@@ -275,8 +292,13 @@ void pus_service19_exec_TC_19_5(tc_handler_t *ptc_handler) {
 	uint8_t N;
 	uint16_t EvID;
 
-	//TODO 07 Get N & EvID FROM TC
+	//DONE 07 Get N & EvID FROM TC
 
+	// TC -> N
+	error = tc_handler_get_uint8_appdata_field(ptc_handler, &N);
+
+	// TC -> EvID
+	error += tc_handler_get_uint16_appdata_field(ptc_handler, &EvID);
 
 	if (error) {
 
@@ -315,9 +337,10 @@ void pus_service19_exec_TC_19_5(tc_handler_t *ptc_handler) {
 
 				} else {
 
-					//TODO 07 Report TM[1,4] EvAction Undefined
+					//DONE 07 Report TM[1,4] EvAction Undefined
 					//use pus_service1_tx_TM_1_4_EvAction_undefined with
 					// ptc_handler and EvID as parameters
+					pus_service1_tx_TM_1_4_EvAction_undefined(ptc_handler, EvID);
 
 				}
 

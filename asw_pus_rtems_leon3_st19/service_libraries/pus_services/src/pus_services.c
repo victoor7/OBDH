@@ -85,8 +85,8 @@ void pus_services_do_FDIR() {
 						pus_service1_tx_TM_5_X_param_out_of_limit(EvID,
 								&fault_info);
 
-						//TODO 02 call pus_service19_mng_event_action
-						//pus_service19_mng_event_action(EvID);
+						//DONE 02 call pus_service19_mng_event_action
+						pus_service19_mng_event_action(EvID);
 
 
 					}
@@ -106,8 +106,8 @@ void pus_services_do_FDIR() {
 						pus_service1_tx_TM_5_X_param_check_value_fail(EvID,
 								&fault_info);
 
-						//TODO 03 call pus_service19_mng_event_action
-						//pus_service19_mng_event_action(EvID);
+						//DONE 03 call pus_service19_mng_event_action
+						pus_service19_mng_event_action(EvID);
 
 					}
 				}
