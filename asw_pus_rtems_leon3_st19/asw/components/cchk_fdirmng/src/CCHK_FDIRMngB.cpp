@@ -11,14 +11,16 @@
 	// CONSTRUCTORS***********************************************
 
 CCHK_FDIRMng::EDROOM_CTX_Top_0::EDROOM_CTX_Top_0(CCHK_FDIRMng &act,
-	 Pr_Time & EDROOMpVarVNextTimeout ):
+	 Pr_Time & EDROOMpVarVNextTimeout,
+	 CEDROOMPOOLCDEvAction & EDROOMpPoolCDEvAction ):
 
 	EDROOMcomponent(act),
 	Msg(EDROOMcomponent.Msg),
 	MsgBack(EDROOMcomponent.MsgBack),
 	HK_FDIRCtrl(EDROOMcomponent.HK_FDIRCtrl),
 	HK_FDIRTimer(EDROOMcomponent.HK_FDIRTimer),
-	VNextTimeout(EDROOMpVarVNextTimeout)
+	VNextTimeout(EDROOMpVarVNextTimeout),
+	EDROOMPoolCDEvAction(EDROOMpPoolCDEvAction)
 {
 }
 
@@ -29,7 +31,8 @@ CCHK_FDIRMng::EDROOM_CTX_Top_0::EDROOM_CTX_Top_0(EDROOM_CTX_Top_0 &context):
 	MsgBack(context.MsgBack),
 	HK_FDIRCtrl(context.HK_FDIRCtrl),
 	HK_FDIRTimer(context.HK_FDIRTimer),
-	VNextTimeout(context.VNextTimeout)
+	VNextTimeout(context.VNextTimeout),
+	EDROOMPoolCDEvAction(context.EDROOMPoolCDEvAction )
 {
 
 }
@@ -141,6 +144,20 @@ bool	CCHK_FDIRMng::EDROOM_CTX_Top_0::GPendingEvAction()
 
 	//********************************** Pools *************************************
 
+	//CEDROOMPOOLCDEvAction
+
+CCHK_FDIRMng::EDROOM_CTX_Top_0::CEDROOMPOOLCDEvAction::CEDROOMPOOLCDEvAction(
+			TEDROOMUInt32 elemCount,CDEvAction* pMem,bool * pMemMarks):
+				CEDROOMProtectedMemoryPool(elemCount, pMem, pMemMarks,
+					sizeof(CDEvAction))
+{
+}
+
+CDEvAction *	CCHK_FDIRMng::EDROOM_CTX_Top_0::CEDROOMPOOLCDEvAction::AllocData()
+{
+	return(CDEvAction*)CEDROOMProtectedMemoryPool::AllocData();
+}
+
 
 
 // ***********************************************************************
@@ -153,9 +170,14 @@ bool	CCHK_FDIRMng::EDROOM_CTX_Top_0::GPendingEvAction()
 
 	// CONSTRUCTOR*************************************************
 
-CCHK_FDIRMng::EDROOM_SUB_Top_0::EDROOM_SUB_Top_0 (CCHK_FDIRMng&act):
+CCHK_FDIRMng::EDROOM_SUB_Top_0::EDROOM_SUB_Top_0 (CCHK_FDIRMng&act
+	,CEDROOMMemory *pEDROOMMemory):
 		EDROOM_CTX_Top_0(act,
-			VNextTimeout)
+			VNextTimeout,
+			EDROOMPoolCDEvAction),
+		EDROOMPoolCDEvAction(
+			10, pEDROOMMemory->poolCDEvAction,
+			pEDROOMMemory->poolMarkCDEvAction)
 {
 
 }

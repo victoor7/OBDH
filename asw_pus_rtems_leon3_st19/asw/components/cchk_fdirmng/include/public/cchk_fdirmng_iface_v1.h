@@ -67,6 +67,14 @@ public:
 			//!Component Timing Service Memory Object
 			CEDROOMTimingMemory TimingMemory;
 
+	// ********************************************************************
+	// ******************* Component Message Data Pools *******************
+	// ********************************************************************
+
+			//! CDEvAction Data Pool Memory
+			CDEvAction	poolCDEvAction[10+1];
+			//! CDEvAction Data Pool Marks Memory
+			bool	poolMarkCDEvAction[10];
 
 
 			/** \brief This function is used for setting the Component Memory
@@ -212,11 +220,20 @@ public:
 		Pr_Time &VNextTimeout;
 
 
+		// Pools *************************************************
+
+		class CEDROOMPOOLCDEvAction:public CEDROOMProtectedMemoryPool {
+			public:
+			CEDROOMPOOLCDEvAction(TEDROOMUInt32 elemCount,CDEvAction *pMem, bool *pMarks);
+			CDEvAction	* AllocData();
+		};
+		CEDROOMPOOLCDEvAction	& EDROOMPoolCDEvAction;
 
 
 		//!Constructor
 		EDROOM_CTX_Top_0 (CCHK_FDIRMng &act,
-				Pr_Time & EDROOMpVarVNextTimeout );
+				Pr_Time & EDROOMpVarVNextTimeout,
+				CEDROOMPOOLCDEvAction & EDROOMpPoolCDEvAction );
 
 		//!Copy constructor
 		EDROOM_CTX_Top_0 (EDROOM_CTX_Top_0 &context);
@@ -297,12 +314,14 @@ public:
 		Pr_Time VNextTimeout;
 
 
+		// Pools**************************************************
+		CEDROOMPOOLCDEvAction	EDROOMPoolCDEvAction;
 
 
 	public:
 
 		//! Constructor
-		EDROOM_SUB_Top_0 (CCHK_FDIRMng &act );
+		EDROOM_SUB_Top_0 (CCHK_FDIRMng &act, CEDROOMMemory *pEDROOMMemory  );
 
 
 		//! Top Context Behaviour 
