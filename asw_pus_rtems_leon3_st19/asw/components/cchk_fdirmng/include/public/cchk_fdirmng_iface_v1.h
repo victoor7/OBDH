@@ -11,8 +11,8 @@
 //******************************************************************************
 // Data Classes
 
-#include <public/cdtchandler_iface_v1.h>
 #include <public/cdevaction_iface_v1.h>
+#include <public/cdtchandler_iface_v1.h>
 
 
 //******************************************************************************
@@ -67,14 +67,6 @@ public:
 			//!Component Timing Service Memory Object
 			CEDROOMTimingMemory TimingMemory;
 
-	// ********************************************************************
-	// ******************* Component Message Data Pools *******************
-	// ********************************************************************
-
-			//! CDEvAction Data Pool Memory
-			CDEvAction	poolCDEvAction[4+1];
-			//! CDEvAction Data Pool Marks Memory
-			bool	poolMarkCDEvAction[4];
 
 
 			/** \brief This function is used for setting the Component Memory
@@ -220,20 +212,11 @@ public:
 		Pr_Time &VNextTimeout;
 
 
-		// Pools *************************************************
-
-		class CEDROOMPOOLCDEvAction:public CEDROOMProtectedMemoryPool {
-			public:
-			CEDROOMPOOLCDEvAction(TEDROOMUInt32 elemCount,CDEvAction *pMem, bool *pMarks);
-			CDEvAction	* AllocData();
-		};
-		CEDROOMPOOLCDEvAction	& EDROOMPoolCDEvAction;
 
 
 		//!Constructor
 		EDROOM_CTX_Top_0 (CCHK_FDIRMng &act,
-				Pr_Time & EDROOMpVarVNextTimeout,
-				CEDROOMPOOLCDEvAction & EDROOMpPoolCDEvAction );
+				Pr_Time & EDROOMpVarVNextTimeout );
 
 		//!Copy constructor
 		EDROOM_CTX_Top_0 (EDROOM_CTX_Top_0 &context);
@@ -276,17 +259,17 @@ public:
 		/**
 		 * \brief  
 		 */
-		void	FFwdEvAction();
-
-		/**
-		 * \brief  
-		 */
 		void	FInitHK_FDIR();
 
 		/**
-		 * \brief  
+		 * \brief 
 		 */
 		bool	GPendingEvAction();
+
+		/**
+		 * \brief 
+		 */
+		void	FTriggerEvAction();
 
 	};
 
@@ -314,14 +297,12 @@ public:
 		Pr_Time VNextTimeout;
 
 
-		// Pools**************************************************
-		CEDROOMPOOLCDEvAction	EDROOMPoolCDEvAction;
 
 
 	public:
 
 		//! Constructor
-		EDROOM_SUB_Top_0 (CCHK_FDIRMng &act, CEDROOMMemory *pEDROOMMemory  );
+		EDROOM_SUB_Top_0 (CCHK_FDIRMng &act );
 
 
 		//! Top Context Behaviour 

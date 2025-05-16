@@ -60,11 +60,11 @@ void	CCBKGTCExec::EDROOM_CTX_Top_0::FExecBKGTC()
 {
    //Handle Msg->data
   CDTCHandler & varSBKGTC = *(CDTCHandler *)Msg->data;
- 
 	
-		// Data access
+	// Data access
+	// ... =varSBKGTC;
  
-varSBKGTC.ExecTC();
+ varSBKGTC.ExecTC();
 
 }
 

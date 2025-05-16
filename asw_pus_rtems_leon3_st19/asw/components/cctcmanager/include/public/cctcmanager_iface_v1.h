@@ -11,11 +11,11 @@
 //******************************************************************************
 // Data Classes
 
+#include <public/cdevaction_iface_v1.h>
 #include <public/cdtcacceptreport_iface_v1.h>
 #include <public/cdtcexecctrl_iface_v1.h>
 #include <public/cdtchandler_iface_v1.h>
 #include <public/cdtcmemdescriptor_iface_v1.h>
-#include <public/cdevaction_iface_v1.h>
 
 
 //******************************************************************************
@@ -40,8 +40,8 @@ public:
 	 */
 	 enum TEDROOMCCTCManagerSignal { EDROOMSignalTimeout, 
 							EDROOMSignalDestroy, 
-							EDROOMIRQsignal, 
 							SBKGTC, 
+							EDROOMIRQsignal, 
 							SHK_FDIR_TC, 
 							SEvAction };
 
@@ -209,8 +209,8 @@ public:
 	 */
 	enum TEDROOMCCTCManagerSignal { EDROOMSignalTimeout,
 		EDROOMSignalDestroy,
-		EDROOMIRQsignal,
 		SBKGTC,
+		EDROOMIRQsignal,
 		SHK_FDIR_TC,
 		SEvAction };
 
@@ -246,7 +246,7 @@ public:
 			HandleTC,
 			HandleTC_ToReboot,
 			HandleTC_FwdHK_FDIRTC,
-			HandleTC_FwdToBKGTCExec,
+			HandleTC_FwdBKGTC,
 			HandleTC_ExecPrioTC,
 			NewEvAction,
 			EDROOMMemoryTrans };
@@ -312,17 +312,12 @@ public:
 		/**
 		 * \brief  
 		 */
+		void	FFwdBKGTC();
+
+		/**
+		 * \brief  
+		 */
 		void	FFwdHK_FDIRTC();
-
-		/**
-		 * \brief  
-		 */
-		void	FFwdToBKGTCExec();
-
-		/**
-		 * \brief  
-		 */
-		void	FGetEvAction();
 
 		/**
 		 * \brief  
@@ -362,7 +357,7 @@ public:
 		/**
 		 * \brief  
 		 */
-		bool	GFwdToBKGTCExec();
+		bool	GFwdToBKG();
 
 		/**
 		 * \brief  
@@ -373,6 +368,11 @@ public:
 		 * \brief  
 		 */
 		bool	GToReboot();
+
+		/**
+		 * \brief 
+		 */
+		void	FGetEvAction();
 
 	};
 

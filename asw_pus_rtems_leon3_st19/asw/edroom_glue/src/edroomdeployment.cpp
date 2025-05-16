@@ -133,8 +133,8 @@ void CEDROOMSystemCommSAP::RegisterInterfaces(){
 	m_localCommSAP.RegisterInterface(1, mp_comp1->Timer, mp_comp1);
  
 	// Register Interface for Component 2
-	m_localCommSAP.RegisterInterface(1, mp_comp2->RxTC, mp_comp2);
-	m_localCommSAP.RegisterInterface(2, mp_comp2->BKGExecCtrl, mp_comp2);
+	m_localCommSAP.RegisterInterface(1, mp_comp2->BKGExecCtrl, mp_comp2);
+	m_localCommSAP.RegisterInterface(2, mp_comp2->RxTC, mp_comp2);
 	m_localCommSAP.RegisterInterface(3, mp_comp2->HK_FDIRCtrl, mp_comp2);
  
 	// Register Interface for Component 3

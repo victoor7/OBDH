@@ -14,12 +14,6 @@
 #include <public/cdtchandler_iface_v1.h>
 
 
-//******************************************************************************
-// Required software interfaces
-
-#include <public/pus_services_iface_v1.h>
-
-
 /**
  * \class   CCBKGTCExec
  *

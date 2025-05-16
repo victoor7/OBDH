@@ -29,7 +29,7 @@ CCHK_FDIRMng::CCHK_FDIRMng(TEDROOMComponentID id,
 
 		// ***************	Top State  *****************
 
-		edroomTopState(*this,pActorMemory)
+		edroomTopState(*this)
 
 
 {
