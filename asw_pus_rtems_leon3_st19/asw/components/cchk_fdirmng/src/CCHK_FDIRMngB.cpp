@@ -67,7 +67,7 @@ void	CCHK_FDIRMng::EDROOM_CTX_Top_0::FDoHK_FDIR()
   Pr_Time time;
  
 VNextTimeout+= Pr_Time(1,0); // Add X sec + Y microsec 
-
+ 
 time=VNextTimeout; 
  
 pus_services_update_params();
@@ -75,7 +75,7 @@ pus_services_update_params();
 pus_service4_update_all_stats();
  
 pus_service3_do_HK();
-
+ 
 pus_services_do_FDIR();
    //Program absolute timer 
    HK_FDIRTimer.InformAt( time ); 
@@ -112,16 +112,6 @@ VNextTimeout=time;
 
 
 
-bool	CCHK_FDIRMng::EDROOM_CTX_Top_0::GPendingEvAction()
-
-{
-
- return (pus_service19_pending_ev_actions());
-
-}
-
-
-
 void	CCHK_FDIRMng::EDROOM_CTX_Top_0::FTriggerEvAction()
 
 {
@@ -131,9 +121,19 @@ void	CCHK_FDIRMng::EDROOM_CTX_Top_0::FTriggerEvAction()
     
     // Complete Data
     pSEvAction_Data->ExtractEvActionFromQueue();
-
+ 
     //Send message
     HK_FDIRCtrl.send(SEvAction,pSEvAction_Data,&EDROOMPoolCDEvAction);
+
+}
+
+
+
+bool	CCHK_FDIRMng::EDROOM_CTX_Top_0::GPendingEvAction()
+
+{
+
+ return (pus_service19_pending_ev_actions());
 
 }
 

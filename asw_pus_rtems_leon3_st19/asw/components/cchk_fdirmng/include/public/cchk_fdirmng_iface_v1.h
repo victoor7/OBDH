@@ -262,14 +262,14 @@ public:
 		void	FInitHK_FDIR();
 
 		/**
-		 * \brief 
-		 */
-		bool	GPendingEvAction();
-
-		/**
-		 * \brief 
+		 * \brief  
 		 */
 		void	FTriggerEvAction();
+
+		/**
+		 * \brief  
+		 */
+		bool	GPendingEvAction();
 
 	};
 
